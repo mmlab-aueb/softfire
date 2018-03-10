@@ -17,7 +17,7 @@ ether = ethernet()
 while True:
     data = s.recv(2048)
     ether.parse(data)
-    if ether.type == 0x0800: //IP
+    if ether.type == 0x0800: #IP
         ip_packet = ether.payload 
         if ip_packet.srcip == IPAddr("192.168.130.9"):
             print ip_packet.payload
