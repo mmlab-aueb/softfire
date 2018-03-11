@@ -8,9 +8,12 @@ class HTTTProxy(BaseHTTPServer.BaseHTTPRequestHandler):
         path = self.path
         self.send_response(200)
         self.send_header("Content-type", "text/html")
+        self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(self.html_hello_world)
-        self.wfile.write(path)
+        request = path.split("/")
+        self.wfile.write(request[1])
+        self.wfile.write(request[2])
         
         
         
