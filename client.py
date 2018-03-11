@@ -15,7 +15,7 @@ for x in (1,2,4,8,3,5,9,6,10,12,7,11,13,14,15):
     ip_packet.payload = " Bloom filrer = " + '%x'%x
     ether      = ethernet()
     ether.type = 0x0800
-    ether.dst  = EthAddr(b"\x00\x00\x00\x00\x00\x0"+'%x'%x)
+    ether.dst  = EthAddr(b"\x00\x00\x00\x00\x00"+chr(x))
     ether.src  = EthAddr(b"\xfa\x16\x3e\xae\xdc\xa6")
     ether.payload = ip_packet
 

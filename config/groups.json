@@ -1,0 +1,10 @@
+{
+    "groups" : {
+        "all": {
+            "members" : ["aueb-02","aueb-04","aueb-07","aueb-08"]
+        },
+        "west":{
+            "members" : ["aueb-02","aueb-04"]
+        }
+    }
+}

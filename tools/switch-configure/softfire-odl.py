@@ -15,6 +15,7 @@ def post_flow (flow_json,flow_name):
     }
     conn = httplib.HTTPConnection(odl_host, 8001)
     conn.request("PUT", odl_path, flow_json,headers)
+    #conn.request("DELETE", odl_path,None, headers)
     response = conn.getresponse()
     print response.status, response.reason
 
@@ -60,7 +61,7 @@ output_node_connector = """
                           }
                         },
 """
-topo         = json.load(open('topology.json'))
+topo         = json.load(open('../../config/topology.json'))
 servers      = topo['servers']
 flow_counter = 1
 for x in range(1, len(servers)+1):
