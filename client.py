@@ -10,12 +10,13 @@ s.bind(('ens3', 0))
 ip_packet         = ipv4()
 ip_packet.srcip   = IPAddr("192.168.130.9")
 ip_packet.dstip   = IPAddr("192.168.130.200")
-ip_packet.payload = "id dest = 15"
 
-ether      = ethernet()
-ether.type = 0x0800
-ether.dst  = EthAddr(b"\x00\x00\x00\x00\x00\x01")
-ether.src  = EthAddr(b"\xfa\x16\x3e\xae\xdc\xa6")
-ether.payload = ip_packet
+for x in (1,2,4,8,3,5,9,6,10,12,7,11,13,14,15):
+    ip_packet.payload = " Bloom filrer = " + '%x'%x
+    ether      = ethernet()
+    ether.type = 0x0800
+    ether.dst  = EthAddr(b"\x00\x00\x00\x00\x00\x0"+'%x'%x)
+    ether.src  = EthAddr(b"\xfa\x16\x3e\xae\xdc\xa6")
+    ether.payload = ip_packet
 
-s.send(ether.pack())
+    s.send(ether.pack())
