@@ -2,7 +2,7 @@ from topology_manager      import TopologyManager
 from proxies.http          import HTTTProxy
 from proxies.proxylistener import ProxyListener
 from bf                    import PacketHandler,BFServer, BFClient
-
+import threading
 
 class SoftFIRE(ProxyListener, PacketHandler):
 
@@ -10,19 +10,19 @@ class SoftFIRE(ProxyListener, PacketHandler):
         self.bfclient = BFClient()
         self.bfserver = BFServer(self)
         self.wait_resp= threading.Event()
-        wait_resp.unset()
+        self.wait_resp.clear()
         self.bfserver.nb_listen()
         
     def from_proxy(self,path):
-        wait_resp.unset()
+        self.wait_resp.clear()
         self.response = "Empty response"
         self.bfclient.send_packet(15,path)
-        wait_resp.wait(3)
+        self.wait_resp.wait(3)
         return self.response
         
-    def handle_packet(selft,packet):
+    def handle_packet(self,packet):
         self.response = packet
-        wait_resp.set()
+        self.wait_resp.set()
         print packet
         
     def listen_for_HTTP(self):
