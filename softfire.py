@@ -6,13 +6,14 @@ from bf                    import PacketHandler,BFServer, BFClient
 
 class SoftFIRE(ProxyListener, PacketHandler):
     bfclient = BFClient()
-    bfserver = BFServer()
+    bfserver = BFServer(self)
     
     
     def __init__(self):
         bfserver.nb_listen()
         
     def from_proxy(self,path):
+        bfclient.send_packet(15,path)
         return "Hello"
         
     def handle_packet(packet):
