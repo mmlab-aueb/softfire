@@ -79,6 +79,15 @@ for x in range(1, len(servers)+1):
             output_counter +=1
         post_flow (add_new_flow%(flow_id,flow_id,Bloom_filter,output_nodes.rstrip(',')),flow_id)
         flow_counter +=1
-
+print "------------------------"
+print flow_id
+clients = topo['clients']
+client  = clients[0]
+Bloom_filter = 0
+output_nodes   = ""
+Bloom_filter = Bloom_filter | client['lid']
+flow_id      = "BF-flow-" + str(flow_counter)
+output_nodes = output_node_connector%(output_counter,client['port'])
+post_flow(add_new_flow%(flow_id,flow_id,Bloom_filter,output_nodes.rstrip('\n,')),flow_id)
     
  
