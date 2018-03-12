@@ -1,10 +1,17 @@
 from topology_manager      import TopologyManager
 from proxies.http          import HTTTProxy
 from proxies.proxylistener import ProxyListener
-from bf                    import PacketHandler,BFServer
+from bf                    import PacketHandler,BFServer, BFClient
 
 
 class SoftFIRE(ProxyListener, PacketHandler):
+    bfclient = BFClient()
+    bfserver = BFServer()
+    
+    
+    def __init__(self):
+        bfserver.nb_listen()
+        
     def from_proxy(self,path):
         return "Hello"
         
