@@ -5,6 +5,15 @@
         },
         "west":{
             "members" : ["aueb-02","aueb-04"]
+        },
+        "east":{
+            "members" : ["aueb-07","aueb-08"]
+        },
+        "first-floor":{
+            "members" : ["aueb-02","aueb-07"]
+        },
+        "second-floor":{
+            "members" : ["aueb-04","aueb-08"]
         }
     }
 }
