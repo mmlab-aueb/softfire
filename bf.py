@@ -26,7 +26,21 @@ class BFServer:
                 ip_packet = ether.payload 
                 if ip_packet.dstip == IPAddr("192.168.130.200"):
                    self.handler.handle_packet(ip_packet.payload)
+class BFClient:
+    def __init__(self):
+        self.s = socket(AF_PACKET, SOCK_RAW)
+        self.s.bind(('ens3', 0))
+        
+    def send_packet(bf,payload):
+        ip_packet         = ipv4()
+        ip_packet.srcip   = IPAddr("192.168.130.9")
+        ip_packet.dstip   = IPAddr("192.168.130.200")
+        ip_packet.payload = payload
+        ether             = ethernet()
+        ether.type        = 0x0800
+        ether.dst         = EthAddr(b"\x00\x00\x00\x00\x00"+chr(bf))
+        ether.src         = EthAddr(b"\xfa\x16\x3e\xae\xdc\xa6")
+        ether.payload     = ip_packet
+        self.s.send(ether.pack())
+        
 
-if __name__ == "__main__":
-    server =  RawServer()
-    server.listen()
