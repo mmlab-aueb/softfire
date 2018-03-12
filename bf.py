@@ -15,16 +15,16 @@ class BFServer:
         self.handler = handler
         process = subprocess.Popen(['hostname', '-I'], stdout=subprocess.PIPE)
         self.ip,err = process.communicate()
+        #Open a Socket
+        self.s = socket(AF_PACKET, SOCK_RAW, htons(0x0003) )
+        #bind an interface
+        self.s.bind(('ens3', 0))
         
     def listen(self):
-        #Open a Socket
-        s = socket(AF_PACKET, SOCK_RAW, htons(0x0003) )
-        #bind an interface
-        s.bind(('ens3', 0))
         #parse packet payload and print it
         ether = ethernet()
         while True:
-            data = s.recv(2048)
+            data = self.s.recv(2048)
             ether.parse(data)
             if ether.type == 0x0800: #IP
                 ip_packet = ether.payload 
@@ -32,6 +32,8 @@ class BFServer:
                     self.handler.handle_packet(ip_packet.payload)
     def nb_listen(self):
         threading.Thread(target = self.listen).start()
+        
+    
         
 class BFClient:
     def __init__(self):
