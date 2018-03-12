@@ -9,13 +9,20 @@ class SoftFIRE(ProxyListener, PacketHandler):
     def __init__(self):
         self.bfclient = BFClient()
         self.bfserver = BFServer(self)
+        self.wait_resp= threading.Event()
+        wait_resp.unset()
         self.bfserver.nb_listen()
         
     def from_proxy(self,path):
+        wait_resp.unset()
+        self.response = "Empty response"
         self.bfclient.send_packet(15,path)
-        return "Hello"
+        wait_resp.wait(3)
+        return self.response
         
     def handle_packet(selft,packet):
+        self.response = packet
+        wait_resp.set()
         print packet
         
     def listen_for_HTTP(self):
