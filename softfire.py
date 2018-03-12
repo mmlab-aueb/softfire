@@ -15,7 +15,7 @@ class SoftFIRE(ProxyListener, PacketHandler):
         self.bfclient.send_packet(15,path)
         return "Hello"
         
-    def handle_packet(packet):
+    def handle_packet(selft,packet):
         print packet
         
     def listen_for_HTTP(self):
