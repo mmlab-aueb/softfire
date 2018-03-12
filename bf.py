@@ -1,5 +1,5 @@
 import threading
-import socket
+from socket import *
 from pox.lib.packet import ethernet,ipv4
 from pox.lib.addresses import IPAddr,EthAddr 
 
@@ -25,7 +25,7 @@ class BFServer:
             if ether.type == 0x0800: #IP
                 ip_packet = ether.payload 
                 if ip_packet.dstip == IPAddr("192.168.130.200"):
-                   handler.handle_packet(ip_packet.payload)
+                   self.handler.handle_packet(ip_packet.payload)
 
 if __name__ == "__main__":
     server =  RawServer()

@@ -2,8 +2,9 @@ from bf import PacketHandler,BFServer
 
 class BFhandler(PacketHandler):
         
-    def handle_packet(packet):
+    def handle_packet(selft,packet):
         print packet
 
-bfserver = BFServer(BFhandler)
+handler  =  BFhandler()
+bfserver = BFServer(handler)
 bfserver.listen() 
