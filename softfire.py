@@ -3,6 +3,7 @@ from proxies.http          import HTTTProxy
 from proxies.proxylistener import ProxyListener
 from bf                    import PacketHandler,BFServer, BFClient
 from socket                import *
+import threading
 
 class SoftFIRE(ProxyListener, PacketHandler):
 
@@ -10,11 +11,11 @@ class SoftFIRE(ProxyListener, PacketHandler):
         self.bfclient = BFClient()
         self.bfserver = BFServer(self)
         self.wait_resp= threading.Event()
-        wait_resp.unset()
+        self.wait_resp.clear()
         self.bfserver.nb_listen()
         
     def from_proxy(self,path):
-        wait_resp.unset()
+        self.wait_resp.clear()
         self.response = ""
         options = path.split["/"]
         method  = options[1]
