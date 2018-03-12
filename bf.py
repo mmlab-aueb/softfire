@@ -28,7 +28,7 @@ class BFServer:
                     print "Received packet"
                     self.handler.handle_packet(ip_packet.payload)
     def nb_listen(self):
-        threading.Thread(target = self.listen)
+        threading.Thread(target = self.listen).strart()
         
 class BFClient:
     def __init__(self):
