@@ -25,6 +25,7 @@ class BFServer:
             if ether.type == 0x0800: #IP
                 ip_packet = ether.payload 
                 if ip_packet.dstip == IPAddr("192.168.130.200"):
+                    print "Received packet"
                    self.handler.handle_packet(ip_packet.payload)
     def nb_listen(self):
         threading.Thread(target = self.listen)
