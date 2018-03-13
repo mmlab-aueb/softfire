@@ -1,31 +1,31 @@
 {
     "groups" : {
         "all": {
-            "members" : ["aueb-02","aueb-04","aueb-07","aueb-08"]
+            "members" : ["aueb-02","aueb-03","aueb-05","aueb-06"]
         },
         "west":{
-            "members" : ["aueb-02","aueb-04"]
+            "members" : ["aueb-02","aueb-03"]
         },
         "east":{
-            "members" : ["aueb-07","aueb-08"]
+            "members" : ["aueb-05","aueb-06"]
         },
         "first-floor" :{
-            "members" : ["aueb-02","aueb-07"]
+            "members" : ["aueb-02","aueb-05"]
         },
         "second-floor":{
-            "members" : ["aueb-04","aueb-08"]
+            "members" : ["aueb-03","aueb-06"]
         },
         "aueb-02"     :{
             "members" : ["aueb-02"]
         },
-        "aueb-04"     :{
-            "members" : ["aueb-04"]
+        "aueb-03"     :{
+            "members" : ["aueb-03"]
         },
-        "aueb-07"     :{
-            "members" : ["aueb-07"]
+        "aueb-05"     :{
+            "members" : ["aueb-05"]
         },
-        "aueb-08"     :{
-            "members" : ["aueb-08"]
+        "aueb-06"     :{
+            "members" : ["aueb-06"]
         }
     }
 }
