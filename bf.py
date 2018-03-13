@@ -19,6 +19,7 @@ class BFServer:
         self.s = socket(AF_PACKET, SOCK_RAW, htons(0x0003) )
         #bind an interface
         self.s.bind(('ens3', 0))
+        print "Socket ready at " + self.ip
         
     def listen(self):
         #parse packet payload and print it
@@ -43,7 +44,7 @@ class BFClient:
         self.s.bind(('ens3', 0))
         
     def send_packet(self,bf,payload):
-        print "Sending " + payload + " with BF" + str(bf) 
+        print "Sending " + payload + " with BF " + str(bf) 
         ip_packet         = ipv4()
         ip_packet.srcip   = IPAddr(self.ip)
         ip_packet.dstip   = IPAddr("192.168.130.200")
