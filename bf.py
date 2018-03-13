@@ -23,15 +23,13 @@ class BFServer:
         
     def listen(self):
         #parse packet payload and print it
-        print "Listening"
         while True:
             ether = ethernet()
             data = self.s.recv(2048)
             ether.parse(data)
             if ether.type == 0x0800: #IP
                 ip_packet = ether.payload 
-                if ip_packet.dstip == IPAddr("192.168.130.200"):# and ip_packet.srcip != IPAddr(self.ip):
-                    print "Received " + str(ip_packet.payload)
+                if ip_packet.dstip == IPAddr("192.168.130.200") and ip_packet.srcip != IPAddr(self.ip):
                     self.handler.handle_packet(ip_packet.payload)
     def nb_listen(self):
         threading.Thread(target = self.listen).start()
@@ -53,7 +51,7 @@ class BFClient:
         ip_packet.payload = payload
         ether             = ethernet()
         ether.type        = 0x0800
-        ether.dst         = EthAddr(b"\x00\x00\x00\x00\x00"+chr(bf))
+        ether.dst         = EthAddr(b"\x00\x00\x00\x00\x00\x0f")#+chr(bf))
         ether.src         = EthAddr(b"\xfa\x16\x3e\xae\xdc\x00")
         ether.payload     = ip_packet
         self.s.send(ether.pack())
