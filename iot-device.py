@@ -9,8 +9,8 @@ import time
 class BFhandler(PacketHandler):
     
     def __init__(self):
-        self.screen = curses.initscr()
-        self.draw_gui("off")
+        #self.screen = curses.initscr()
+        #self.draw_gui("off")
 
     def draw_gui(self,lights):
         k = 0
