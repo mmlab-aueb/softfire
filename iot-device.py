@@ -1,4 +1,5 @@
 from bf import PacketHandler,BFServer,BFClient
+from random import randint
 import sys,os
 import curses
 import time
@@ -76,8 +77,10 @@ class BFhandler(PacketHandler):
             resource,value = payload.split("=")
             if resource == "lights":
                 self.lights(value)
-        client = BFClient()
-        client.send_packet(0,"Hello")
+        if method == "GET":
+            temperature = randint(20,30)
+            client = BFClient()
+            client.send_packet(0,str(temperature))
 
 handler  =  BFhandler()
 try:
