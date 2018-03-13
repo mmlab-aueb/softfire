@@ -4,8 +4,8 @@ class BFhandler(PacketHandler):
         
     def handle_packet(selft,packet):
         print packet
-        client = BFClient()
-        client.send_packet(0,"Hello")
+        #client = BFClient()
+        #client.send_packet(0,"Hello")
 
 handler  =  BFhandler()
 bfserver = BFServer(handler)
