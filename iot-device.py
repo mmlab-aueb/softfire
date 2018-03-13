@@ -79,7 +79,7 @@ class BFhandler(PacketHandler):
             resource,value = payload.split("=")
             print payload + resource + value
             if resource == "lights":
-                self.lights(value)
+                self.draw_gui(value)
         if method == "GET":
             temperature = randint(20,30)
             client = BFClient()
