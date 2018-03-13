@@ -14,6 +14,8 @@ class BFhandler(PacketHandler):
         self.draw_gui("off")
 
     def draw_gui(self,lights):
+        print "Will set lights to " + lights
+        return
         k = 0
         cursor_x = 0
         cursor_y = 0
@@ -76,8 +78,8 @@ class BFhandler(PacketHandler):
             payload = options[3]
             resource,value = payload.split("=")
             print payload + resource + value
-            #if resource == "lights":
-            #    self.lights(value)
+            if resource == "lights":
+                self.lights(value)
         if method == "GET":
             temperature = randint(20,30)
             client = BFClient()
