@@ -22,12 +22,12 @@ class SoftFIRE(ProxyListener, PacketHandler):
         uri     = options[2]
         bf      = self.get_BF(uri)
         self.bfclient.send_packet(int(bf),path)
-        if method == "GET": wait_resp.wait(3)
+        if method == "GET": self.wait_resp.wait(3)
         return self.response
         
     def handle_packet(selft,packet):
         self.response = packet
-        wait_resp.set()
+        self.wait_resp.set()
         print packet
         
     def listen_for_HTTP(self):
