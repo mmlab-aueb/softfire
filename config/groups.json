@@ -9,11 +9,23 @@
         "east":{
             "members" : ["aueb-07","aueb-08"]
         },
-        "first-floor":{
+        "first-floor" :{
             "members" : ["aueb-02","aueb-07"]
         },
         "second-floor":{
             "members" : ["aueb-04","aueb-08"]
+        },
+        "aueb-02"     :{
+            "members" : ["aueb-02"]
+        },
+        "aueb-04"     :{
+            "members" : ["aueb-04"]
+        },
+        "aueb-07"     :{
+            "members" : ["aueb-07"]
+        },
+        "aueb-08"     :{
+            "members" : ["aueb-08"]
         }
     }
 }
