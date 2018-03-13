@@ -17,7 +17,7 @@ class SoftFIRE(ProxyListener, PacketHandler):
     def from_proxy(self,path):
         self.wait_resp.clear()
         self.response = ""
-        options = path.split["/"]
+        options = path.split("/")
         method  = options[1]
         uri     = options[2]
         bf      = self.get_BF(uri)
