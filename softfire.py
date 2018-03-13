@@ -21,7 +21,7 @@ class SoftFIRE(ProxyListener, PacketHandler):
         method  = options[1]
         uri     = options[2]
         bf      = self.get_BF(uri)
-        self.bfclient.send_packet(bf,path)
+        self.bfclient.send_packet(int(bf),path)
         if method == "GET": wait_resp.wait(3)
         return self.response
         
@@ -36,7 +36,7 @@ class SoftFIRE(ProxyListener, PacketHandler):
     
     def get_BF(self, group):
         s = socket(AF_INET, SOCK_DGRAM)
-        s.sendto("aueb-02 " + group,('',8000))
+        s.sendto("aueb-01 " + group,('',8000))
         bf, tm = s.recvfrom(1024)
         return bf
         
