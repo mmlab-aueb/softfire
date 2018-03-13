@@ -9,6 +9,7 @@ import time
 class BFhandler(PacketHandler):
     
     def __init__(self):
+        return
         self.screen = curses.initscr()
         self.draw_gui("off")
 
@@ -74,8 +75,9 @@ class BFhandler(PacketHandler):
         if method == "PUT":
             payload = options[3]
             resource,value = payload.split("=")
-            if resource == "lights":
-                self.lights(value)
+            print payload + resource + value
+            #if resource == "lights":
+            #    self.lights(value)
         if method == "GET":
             temperature = randint(20,30)
             client = BFClient()
