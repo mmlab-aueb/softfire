@@ -43,7 +43,7 @@ class BFClient:
         self.s.bind(('ens3', 0))
         
     def send_packet(self,bf,payload):
-        print "Sending " + payload + " with BF" + bf 
+        print "Sending " + payload + " with BF" + str(bf) 
         ip_packet         = ipv4()
         ip_packet.srcip   = IPAddr(self.ip)
         ip_packet.dstip   = IPAddr("192.168.130.200")
