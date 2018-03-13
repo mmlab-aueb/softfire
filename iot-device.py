@@ -13,7 +13,6 @@ class BFhandler(PacketHandler):
         self.draw_gui("off")
 
     def draw_gui(self,lights):
-        print "will draw"
         k = 0
         cursor_x = 0
         cursor_y = 0
@@ -68,7 +67,8 @@ class BFhandler(PacketHandler):
         else:
             self.draw_gui("off")
         
-    def handle_packet(selft,packet):
+    def handle_packet(self,packet):
+        print "Received packet" + packet
         options = packet.split("/")
         method  = options[1]
         uri     = options[2]
