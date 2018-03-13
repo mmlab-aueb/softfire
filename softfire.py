@@ -25,7 +25,7 @@ class SoftFIRE(ProxyListener, PacketHandler):
         if method == "GET": self.wait_resp.wait(3)
         return self.response
         
-    def handle_packet(selft,packet):
+    def handle_packet(self,packet):
         self.response = packet
         self.wait_resp.set()
         print packet
