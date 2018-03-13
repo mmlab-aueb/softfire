@@ -9,13 +9,10 @@ import time
 class BFhandler(PacketHandler):
     
     def __init__(self):
-        return
         self.screen = curses.initscr()
         self.draw_gui("off")
 
     def draw_gui(self,lights):
-        print "Will set lights to " + lights
-        return
         k = 0
         cursor_x = 0
         cursor_y = 0
@@ -77,7 +74,6 @@ class BFhandler(PacketHandler):
         if method == "PUT":
             payload = options[3]
             resource,value = payload.split("=")
-            print payload + resource + value
             if resource == "lights":
                 self.draw_gui(value)
         if method == "GET":
