@@ -69,7 +69,7 @@ class BFhandler(PacketHandler):
             self.draw_gui("off")
         
     def handle_packet(selft,packet):
-        options = packet.split["/"]
+        options = packet.split("/")
         method  = options[1]
         uri     = options[2]
         if method == "PUT":
