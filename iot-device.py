@@ -10,8 +10,8 @@ class BFhandler(PacketHandler):
     
     def __init__(self):
         return
-        #self.screen = curses.initscr()
-        #self.draw_gui("off")
+        self.screen = curses.initscr()
+        self.draw_gui("off")
 
     def draw_gui(self,lights):
         k = 0
@@ -69,7 +69,6 @@ class BFhandler(PacketHandler):
             self.draw_gui("off")
         
     def handle_packet(self,packet):
-        print "Received packet" + packet
         options = packet.split("/")
         method  = options[1]
         uri     = options[2]
