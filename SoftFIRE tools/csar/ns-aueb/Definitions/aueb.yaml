@@ -1,0 +1,170 @@
+---
+description: "NS for deploying AUEB experiment"
+metadata:
+  ID: ns-aueb
+  vendor: AUEB
+  version: "0.3"
+
+topology_template:
+  node_templates:
+    private:
+      type: tosca.nodes.nfv.VL
+    CPAUEB:
+      properties:
+        floatingIP: random
+      requirements:
+        - virtualBinding: VDUAUEB
+        - virtualLink: private
+      type: tosca.nodes.nfv.CP
+    VDUAUEB:
+      artifacts:
+        VDUAUEBImage:
+          file: Ubuntu-16.04
+          type: tosca.artifacts.Deployment.Image.VM
+      properties:
+        scale_in_out: 20
+      type: tosca.nodes.nfv.VDU
+    aueb-01:
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+    aueb-02:
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+    aueb-03:
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+    aueb-04:
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+    aueb-05:
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+    aueb-06:
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+    aueb-07:
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+    aueb-08:
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+      interfaces:
+         lifecycle:
+            INSTANTIATE:
+               - instantiate.sh
+      properties:
+        deploymentFlavour:
+          - flavour_key: m1.small
+        endpoint: generic
+        type: auebnode
+        vendor: AUEB
+        version: "0.3"
+      requirements:
+        - virtualLink: private
+        - vdu: VDUAUEB
+      type: openbaton.type.VNF
+tosca_definitions_version: tosca_simple_profile_for_nfv_1_0

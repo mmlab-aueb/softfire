@@ -1,0 +1,12 @@
+name: AUEB Experimental Network
+description: NSD used for implementing AUEB experiment.
+provider: TUB
+shared: true
+nfvo_version: 5.0.1
+image:
+    upload: false
+    names:
+            - Ubuntu-16.04
+vim_types:
+    - openstack
+

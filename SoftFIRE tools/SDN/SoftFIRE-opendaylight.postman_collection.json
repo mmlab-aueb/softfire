@@ -1,0 +1,251 @@
+{
+	"info": {
+		"name": "SoftFIRE-opendaylight",
+		"_postman_id": "289ce08f-b617-44b5-8f53-360e8fc0015b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Flows user table",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "API-token",
+						"value": "{{api-token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{URI}}/restconf/config/opendaylight-inventory:nodes/node/{{switch-id-1}}/table/2",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"restconf",
+						"config",
+						"opendaylight-inventory:nodes",
+						"node",
+						"{{switch-id-1}}",
+						"table",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "All nodes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "API-token",
+						"value": "{{api-token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{URI}}/restconf/config/opendaylight-inventory:nodes",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"restconf",
+						"config",
+						"opendaylight-inventory:nodes"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete flow",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "API-token",
+						"value": "{{api-token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{URI}}/restconf/config/opendaylight-inventory:nodes/node/{{switch-id-2}}/table/2/flow/aueb-2",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"restconf",
+						"config",
+						"opendaylight-inventory:nodes",
+						"node",
+						"{{switch-id-2}}",
+						"table",
+						"2",
+						"flow",
+						"aueb-2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Match Ether-dest to port",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "API-token",
+						"value": "{{api-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"flow-node-inventory:flow\": [\n        {\n          \"id\": \"bf1\",\n          \"flow-name\": \"flow-915\",\n          \"match\": {\n            \"ethernet-match\": {\n              \"ethernet-destination\":{\n              \t\"address\" :\"00:00:00:00:00:01\"\n              },\n              \"ethernet-type\": {\n                \"type\": 2048\n              }\n            }\n          },\n          \"priority\": 1000,\n          \"table_id\": 2,\n          \"cookie\": 134217728,\n          \"instructions\": {\n            \"instruction\": [\n              {\n                \"order\": 0,\n                \"apply-actions\": {\n                  \"action\": [\n                    {\n                      \"order\": 0,\n                      \"output-action\": {\n                      \t\"output-node-connector\":\"1021\"\n                      }\n                    }\n                  ]\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }"
+				},
+				"url": {
+					"raw": "{{URI}}/restconf/config/opendaylight-inventory:nodes/node/{{switch-id-1}}/table/2/flow/bf1",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"restconf",
+						"config",
+						"opendaylight-inventory:nodes",
+						"node",
+						"{{switch-id-1}}",
+						"table",
+						"2",
+						"flow",
+						"bf1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Match IP drop",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "API-token",
+						"value": "{{api-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"flow-node-inventory:flow\": [\n        {\n          \"id\": \"aueb-2\",\n          \"flow-name\": \"flow-916\",\n          \"match\": {\n          \t\"ethernet-match\": {\n              \"ethernet-type\": {\n                \"type\": 2048\n              }\n            },\n            \"ipv4-destination\": \"192.168.130.15/32\"\n          },\n          \"priority\": 1000,\n          \"table_id\": 2,\n          \"cookie\": 134217728,\n          \"instructions\": {\n            \"instruction\": [\n              {\n                \"order\": 0,\n                \"apply-actions\": {\n                  \"action\": [\n                    {\n                      \"order\": 0,\n                      \"drop-action\": {}\n                    }\n                  ]\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }"
+				},
+				"url": {
+					"raw": "{{URI}}/restconf/config/opendaylight-inventory:nodes/node/{{switch-id-2}}/table/2/flow/aueb-2",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"restconf",
+						"config",
+						"opendaylight-inventory:nodes",
+						"node",
+						"{{switch-id-2}}",
+						"table",
+						"2",
+						"flow",
+						"aueb-2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Match in port drop",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "API-token",
+						"value": "{{api-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"flow-node-inventory:flow\": [\n        {\n          \"id\": \"aueb-1\",\n          \"flow-name\": \"drop-based-on-port\",\n          \"match\": {\n            \"in-port\": 926\n          },\n          \"priority\": 100,\n          \"table_id\": 2,\n          \"cookie\": 134217728,\n          \"instructions\": {\n            \"instruction\": [\n              {\n                \"order\": 0,\n                \"apply-actions\": {\n                  \"action\": [\n                    {\n                      \"order\": 0,\n                      \"drop-action\": {}\n                    }\n                  ]\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }"
+				},
+				"url": {
+					"raw": "{{URI}}/restconf/config/opendaylight-inventory:nodes/node/{{switch-id-2}}/table/2/flow/aueb-1",
+					"host": [
+						"{{URI}}"
+					],
+					"path": [
+						"restconf",
+						"config",
+						"opendaylight-inventory:nodes",
+						"node",
+						"{{switch-id-2}}",
+						"table",
+						"2",
+						"flow",
+						"aueb-1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

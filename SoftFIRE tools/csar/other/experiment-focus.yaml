@@ -1,0 +1,22 @@
+---
+description: "AUEB experiment"
+imports: 
+  - softfire_node_types: "http://docs.softfire.eu/etc/softfire_node_types.yaml"
+topology_template: 
+  node_templates: 
+    aueb:
+      properties: 
+        resource_id: ns-aueb
+        testbeds:
+          ANY: foκus-dev
+        ssh_pub_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmqHuz0RncrcXLVJa4LJvHfSttIIIp1RvZ1rfXooRHuyFg7eXUypxRqCg0/sFdd5iFO9is7esc0jCXA8rfTA6dxzyf0iCt/vLr7F8YBgUrwcJBY7+wFOnQ2aVMpdpICk817VR1bA8WyxlP97kGJFfqCmLpQu5fuRel+XdABQPIPZDKa8SjddPnzrYtLySXurQsMtetEhVsp/1tTB5TFHDHq9ICHbldFMCSozbxLx1IVylEOCscr2P0Hj+JRGluhZ80Ek23EV5unwvFOci+vvmIPqen4wSens8QwM4tOBN9Vn4ikqFlR51N0cMw8EqIAiBHKJuFNJ6B2/SafeAaOXt9"
+        nsd_name: aueb
+        file_name: Files/ns-aueb.csar
+      type: NfvResource
+      
+    sdn_focus:
+      properties:
+        resource_id: sdn-controller-opensdncore-fokus
+      type: SdnResource
+
+tosca_definitions_version: tosca_simple_yaml_1_0
